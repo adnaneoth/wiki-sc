@@ -1,0 +1,17 @@
+{
+    "name": "youcode/s_c",
+    "description": "hello my name is adnane",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+
+        }
+    },
+    "authors": [
+        {
+            "name": "adnaneoth",
+            "email": "adnaneothmane64@gmail.com"
+        }
+    ],
+    "require": {}
+}
