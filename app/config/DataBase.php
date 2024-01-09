@@ -4,7 +4,7 @@ namespace app\config;
 use PDO;
 use PDOException;
 
-class Database {
+class DataBase {
     private $host = "localhost";
     private $user = "root";
     private $password = "";
