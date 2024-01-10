@@ -1,5 +1,6 @@
 <?php
 use app\Controllers\DashboardController;
+
 define('APP_URL', "http://localhost/wiki-sc/");
 require_once(__DIR__ . '/../vendor/autoload.php');
 use app\Controllers\HomeController;
@@ -23,18 +24,34 @@ switch ($router) {
         $controllers = new SignupController;
         $controllers->index();
         break;
-    
-        case 'dashboard':
-            $controllers = new DashboardController;
-            $controllers->affich();
-            break;
-    
-    
-    
-        default:
-    $controllers = new ErrorController;
-    $controllers->error();
-    break;
-    
+
+    case 'dashboard':
+        $controllers = new DashboardController;
+        $controllers->index();
+        break;
+
+    case 'wikidelete':
+        $controllers = new DashboardController;
+        $controllers->delete();
+        break;
+
+    case 'wikiaccept':
+        $controllers = new DashboardController;
+        $controllers->accept();
+        break;
+
+    case 'addTags':
+        $controllers = new DashboardController;
+        $controllers->addTags();
+
+        break;
+
+
+
+    default:
+        $controllers = new ErrorController;
+        $controllers->error();
+        break;
+
 
 }

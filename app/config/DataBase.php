@@ -11,7 +11,9 @@ class DataBase {
     private $database = "gestion_wekis";
     private $conn;
 
-    public function __construct() {
+    private static $instance=null;
+
+    private function __construct() {
         try {
             $dsn = "mysql:host={$this->host};dbname={$this->database}";
             $this->conn = new PDO($dsn, $this->user, $this->password);
@@ -21,6 +23,13 @@ class DataBase {
         } catch (PDOException $e) {
             die("Connection failed: " . $e->getMessage());
         }
+    }
+
+    public static function getInstance(){
+        if (self::$instance===null){
+            self::$instance = new self;
+        }
+        return self::$instance;
     }
 
     public function getConnection() {

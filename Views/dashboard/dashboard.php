@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="public/assets/css/dash.css">
+    <link rel="stylesheet" href="public/assets/css/dashb.css">
     <title>Document</title>
 </head>
 
 
-  
+
 
 <body>
 
@@ -69,35 +70,33 @@
                 <i class="fas fa-user"></i>
                 <div class="container__statistique__info">
                     <p>users</p>
-                    <p class="container__statistique__detail"><?= count($users) ?></p>
+                    <p class="container__statistique__detail">
+                        <?= count($users) ?>
+                    </p>
                 </div>
             </div>
             <div class="container__statistique__data">
                 <i class="fas fa-pen"></i>
                 <div class="container__statistique__info">
-                    <p>wikis</p>
-                    <p class="container__statistique__detail"><?= count($wikis) ?></p>
+                    <p>wikis waiting</p>
+                    <p class="container__statistique__detail">
+                        <?= count($wikis) ?>
+                    </p>
                 </div>
             </div>
             <div class="container__statistique__data">
                 <i class="fas fa-tag"></i>
                 <div class="container__statistique__info">
                     <p>tags</p>
-                    <p class="container__statistique__detail"><?=count($tags) ?></p>
-                </div>
-            </div>
-            <div class="container__statistique__data">
-                <i class="fas fa-table"></i>
-                <div class="container__statistique__info">
-                    <p>categories</p>
+                    <p class="container__statistique__detail">
+                        <?= count($tags) ?>
+                    </p>
                 </div>
             </div>
 
+
         </div>
-        <div class="container__header">
-            <h3>Wikis Statistiques</h3>
-            <i class="fas fa-pen"></i>
-        </div>
+        
 
         <table class="container__table">
             <thead>
@@ -108,50 +107,97 @@
                 </tr>
             </thead>
             <tbody>
-           <?php foreach($wikis as $wiki) : ?>
-           
+                <?php foreach ($wikis as $wiki): ?>
+
                     <tr>
-                        <td><?= $wiki['titre'] ?></td>
-                        <td><?=$wiki['nom'] ?></td>
+                        <td>
+                            <?= $wiki['titre'] ?>
+                        </td>
+                        <td>
+                            <?= $wiki['nom'] ?>
+                        </td>
                         <td>
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal<?= $wiki['id'] ?>">
                                 voir wiki
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal<?= $wiki['id'] ?>" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5 text-dark " id="exampleModalLabel"><?= $wiki['titre'] ?></h1>
-                                            <h1 class="modal-title fs-5 text-dark " id="exampleModalLabel"><?= $wiki['contenu'] ?></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <h1 class="modal-title fs-5 text-dark " id="exampleModalLabel">
+                                                <?= $wiki['titre'] ?>
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-dark ">
-                                         
+                                            <?= $wiki['contenu'] ?>
                                         </div>
-                                        <div class="modal-footer">
-                                            <a  href="" class="btn btn-outline-primary">accepter</a>
-                                            <a  href="" class="btn btn-outline-danger">supprimer</a>
-                                        </div>
+                                        <form action="./index.php?route=wikiaccept" method="post">
+                                            <input type="hidden" name="id" value="<?= $wiki['id'] ?>"></br>
+                                            <button type="submit" class="btn btn-outline-primary"
+                                                name="isaccept">accepter</button>
+                                        </form>
+                                        <form action="./index.php?route=wikidelete" method="post">
+                                            <input type="hidden" name="id" value="<?= $wiki['id'] ?>">
+                                            <button type="submit" class="btn btn-outline-danger"
+                                                name="isaccept">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
 
                         </td>
                     </tr>
-           <?php endforeach ?>
+                <?php endforeach ?>
             </tbody>
-            
+
         </table>
         <div class="container__header">
-            <h3>Tags Statistiques</h3>
+            <h3>Tags </h3>
+
             <i class="fas fa-tag"></i>
         </div>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ajoute
+        </button>
 
-        <table class="container__table">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 text-dark " id="exampleModalLabel">Ajouter Wiki</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-dark ">
+
+                        <form action="./index.php?route=addTags" method="post">
+                            <div class="form-group">
+                                <label for="tag">Nom Tag</label>
+                                <input type="text" class="form-control" id="nom_tag" name="nom_tag"
+                                    aria-describedby="tag" placeholder="Enter Tag">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- <table class="container__table">
             <thead>
                 <tr>
                     <th>nom</th>
@@ -159,25 +205,28 @@
                 </tr>
             </thead>
             <tbody>
-               <?php 
-          
-               
-               foreach($tags as $tag) :?>
+                <?php
 
-                 
+
+                foreach ($tags as $tag): ?>
+
+
                     <tr>
-                        
-                        <td><?= $tag["nom_tag"] ?></td>
                         <td>
+                            <?= $tag["nom_tag"] ?>
+                        </td>
+                        <td>
+
+
                             <div class="btn btn-outline-primary">modifier</div>
                             <div class="btn btn-outline-danger">supprimer</div>
                         </td>
                     </tr>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
             </tbody>
-        </table>
+        </table> -->
 
-        <div class="container__header">
+        <!-- <div class="container__header">
             <h3>Tags Statistiques</h3>
             <i class="fas fa-table"></i>
         </div>
@@ -190,15 +239,15 @@
                 </tr>
             </thead>
             <tbody>
-               
-                    <tr>
-                        <td></td>
-                        <td>
-                            <div class="btn btn-outline-primary">modifier</div>
-                            <div class="btn btn-outline-danger">supprimer</div>
-                        </td>
-                    </tr>
-           
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="btn btn-outline-primary">modifier</div>
+                        <div class="btn btn-outline-danger">supprimer</div>
+                    </td>
+                </tr>
+
             </tbody>
         </table>
         <div class="container__header">
@@ -215,21 +264,31 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $user) : ?>
-                    <tr>
-                        <td><?= $user->nom ?></td>
-                        <td><?= $user->email ?></td>
-                        <td><?= $user->role ?></td>
 
+
+
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td>
+                            <?= $user['nom'] ?>
+                        </td>
+                        <td>
+                            <?= $user['email'] ?>
+                        </td>
+                        <td>
+                            <?= $user['role'] ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-        </table>
+        </table> -->
     </main>
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
