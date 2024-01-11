@@ -46,6 +46,20 @@ switch ($router) {
 
         break;
 
+    case 'addCategories':
+        $controllers = new DashboardController;
+        $controllers->addCategories();
+
+        break;
+    case 'tagdelete':
+        $controllers = new DashboardController;
+        $controllers->tagdelete();
+        break;
+
+    case 'categoriedelete':
+        $controllers = new DashboardController;
+        $controllers->categoriedelete();
+        break;
 
 
     default:

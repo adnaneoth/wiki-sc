@@ -40,6 +40,15 @@ class DashboardModel
         return $records;
     }
 
+    public function getAllcategories()
+    {
+        $query = "SELECT * FROM categories";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $records;
+    }
+
     public function accept($id) {
         $stmt =  $this->db->prepare("update wikis set statue = 1 where id = $id");
         $stmt->execute();

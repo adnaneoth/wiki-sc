@@ -1,6 +1,7 @@
 <?php
 namespace app\Controllers;
 
+use app\Models\CategoriesModel;
 use app\Models\DashboardModel;
 use app\Models\TagsModel;
 
@@ -17,6 +18,9 @@ class DashboardController
 
         $tags = new DashboardModel;
         $tags = $tags->getalltags();
+
+        $categories = new DashboardModel;
+        $categories = $categories->getAllcategories();
 
         include "../Views/dashboard/dashboard.php";
     }
@@ -49,8 +53,37 @@ class DashboardController
             header("Location:index.php?route=dashboard ");
 
         }
+    }
 
+    public function tagdelete()
+    {
 
+        $id = $_POST['id'];
+        $tagsModel = new TagsModel;
+        $tagsModel->tagdelete($id);
+        header("Location: index.php?route=dashboard");
+
+    }
+
+    public function addCategories()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            $tags = new CategoriesModel;
+            $nom = $_POST['nom_categorie'];
+            $tags->addcategories($nom);
+            header("Location:index.php?route=dashboard ");
+
+        }
+    }
+
+    public function categoriedelete()
+    {
+
+        $id = $_POST['id'];
+        $tagsModel = new TagsModel;
+        $tagsModel->categoriedelete($id);
+        header("Location: index.php?route=dashboard");
 
     }
 }
