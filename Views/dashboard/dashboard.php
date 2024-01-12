@@ -15,7 +15,7 @@
 
 
 <body>
-
+   
     <div class="menu">
         <ul class="menu__list">
             <li class="menu__list__item menu__list__item__profile">
@@ -50,7 +50,7 @@
             </li>
 
             <li class="menu__list__item__logout">
-                <a href="">
+                <a href="./index.php?route=logout">
                     <i class="fas fa-sign-out"></i>
                     <p>Log Out</p>
                 </a>
@@ -78,12 +78,30 @@
             <div class="container__statistique__data">
                 <i class="fas fa-pen"></i>
                 <div class="container__statistique__info">
-                    <p>wikis waiting</p>
+                    <p>wikis archived</p>
                     <p class="container__statistique__detail">
                         <?= count($wikis) ?>
                     </p>
                 </div>
             </div>
+
+            <!-- wikis accepted -->
+
+            <div class="container__statistique__data">
+                <i class="fas fa-pen"></i>
+                <div class="container__statistique__info">
+                    <p>wikis accepted</p>
+                    <p class="container__statistique__detail">
+                        <?= count($wikis) ?>
+                    </p>
+                </div>
+            </div>
+
+            <!-- end wikis accepted -->
+
+
+
+
             <div class="container__statistique__data">
                 <i class="fas fa-tag"></i>
                 <div class="container__statistique__info">
@@ -101,7 +119,7 @@
         <table class="container__table">
             <thead>
                 <tr>
-                    <th>titre</th>
+                    <th>titre (wikis archived)</th>
                     <th>Nom Categorie</th>
                     <th>actions</th>
                 </tr>
@@ -159,6 +177,73 @@
             </tbody>
 
         </table>
+
+
+        <!-- wikiaccept affich -->
+
+        <table class="container__table">
+            <thead>
+                <tr>
+                    <th>titre (wikis accepted)</th>
+                    <th>Nom Categorie</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($wikisaccepted as $wikiaccepted): ?>
+
+                    <tr>
+                        <td>
+                            <?= $wikiaccepted['titre'] ?>
+                        </td>
+                        <td>
+                            <?= $wikiaccepted['nom'] ?>
+                        </td>
+                        <td>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalaccept<?= $wikiaccepted['id'] ?>">
+                                voir wiki
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalaccept<?= $wikiaccepted['id'] ?>" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 text-dark " id="exampleModalLabel">
+                                                <?= $wikiaccepted['titre'] ?>
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-dark ">
+                                            <?= $wikiaccepted['contenu'] ?>
+                                        </div>
+                                        <form action="./index.php?route=wikiarchive" method="post">
+                                            <input type="hidden" name="id" value="<?= $wikiaccepted['id'] ?>"></br>
+                                            <button type="submit" class="btn btn-outline-primary"
+                                                name="isaccept">arichve</button>
+                                        </form>
+                                        <form action="./index.php?route=wikidelete" method="post">
+                                            <input type="hidden" name="id" value="<?= $wikiaccepted['id'] ?>">
+                                            <button type="submit" class="btn btn-outline-danger"
+                                                name="isaccept">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+
+        </table>
+
+        <!-- end wikis accepted affich -->
 
         <!-- user affich -->
         <div>

@@ -16,6 +16,9 @@ class DashboardController
         $wikis = new DashboardModel;
         $wikis = $wikis->getallwikis();
 
+        $wikisaccepted = new DashboardModel;
+        $wikisaccepted = $wikisaccepted->getacceptedwikis();
+
         $tags = new DashboardModel;
         $tags = $tags->getalltags();
 
@@ -29,7 +32,15 @@ class DashboardController
     {
         $id = $_POST['id'];
         $wikis = new DashboardModel;
-        $wikis = $wikis->accept($id);
+        $wikis->accept($id);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
+    public function archive()
+    {
+        $id = $_POST['id'];
+        $wikis = new DashboardModel;
+        $wikis->archive($id);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 

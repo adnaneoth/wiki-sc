@@ -43,7 +43,10 @@ include('../Views/includes/navbar.php');
   </div>
 
  
+  <?php
+include('../Views/includes/footer.php');
 
+?>
 
 </body>
 <!-- JavaScript Libraries -->

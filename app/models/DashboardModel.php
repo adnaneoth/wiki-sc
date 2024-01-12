@@ -30,6 +30,17 @@ class DashboardModel
         return ($records);
     }
 
+    public function getacceptedwikis()
+    {
+
+        $queryac = "SELECT w.*, c.nom as nom FROM wikis w INNER JOIN categories c ON w.id_categorie = c.id WHERE w.statue = 1";
+        $stm = $this->db->prepare($queryac);
+        $stm->execute();
+        $recordsacc = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        return ($recordsacc);
+    }
+
 
     public function getAlltags()
     {
@@ -51,6 +62,13 @@ class DashboardModel
 
     public function accept($id) {
         $stmt =  $this->db->prepare("update wikis set statue = 1 where id = $id");
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+           
+    }
+
+    public function archive($id) {
+        $stmt =  $this->db->prepare("update wikis set statue = 0 where id = $id");
         $stmt->execute();
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
            

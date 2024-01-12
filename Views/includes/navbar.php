@@ -26,7 +26,7 @@
                         </form>
                     </div>
                     <a href="./index.php?route=Signup" class="btn btn-success me-2">Sign Up</a>
-                    <a href="./index.php?route=" class="btn btn-success">Login</a>
+                    <a href="./index.php?route=Signin" class="btn btn-success">Login</a>
                 </div>
             </nav>  
         </div>

@@ -1,4 +1,5 @@
 <?php
+use app\Controllers\AuthController;
 use app\Controllers\DashboardController;
 
 define('APP_URL', "http://localhost/wiki-sc/");
@@ -21,9 +22,30 @@ switch ($router) {
 
         break;
     case 'Signup':
-        $controllers = new SignupController;
+        $controllers = new AuthController;
         $controllers->index();
         break;
+
+    case 'Signin':
+        $controllers = new AuthController;
+        $controllers->signin();
+        break;
+
+    case 'signupaction':
+        $controllers = new AuthController;
+        $controllers->signup();
+        break;
+
+    case 'signinaction':
+        $controllers = new AuthController;
+        $controllers->log();
+        break;
+
+    case 'logout':
+        $controllers = new AuthController;
+        $controllers->logout();
+        break;
+
 
     case 'dashboard':
         $controllers = new DashboardController;
@@ -38,6 +60,11 @@ switch ($router) {
     case 'wikiaccept':
         $controllers = new DashboardController;
         $controllers->accept();
+        break;
+
+    case 'wikiarchive':
+        $controllers = new DashboardController;
+        $controllers->archive();
         break;
 
     case 'addTags':
@@ -60,6 +87,8 @@ switch ($router) {
         $controllers = new DashboardController;
         $controllers->categoriedelete();
         break;
+
+
 
 
     default:
