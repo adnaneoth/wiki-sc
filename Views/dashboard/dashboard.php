@@ -15,14 +15,17 @@
 
 
 <body>
-   
+
     <div class="menu">
         <ul class="menu__list">
             <li class="menu__list__item menu__list__item__profile">
                 <div class="menu__profile">
                     <img src="<?= APP_URL ?>public/assets/images/admin_prfl.jpg" alt="">
                 </div>
-                <h4 class="menu__profile__name">othmane adnane</h4>
+                <h4 class="menu__profile__name"><?php
+                session_start();
+                echo $_SESSION['nom'];
+                ?></h4>
             </li>
             <li class="menu__list__item">
                 <a href="">
@@ -92,7 +95,7 @@
                 <div class="container__statistique__info">
                     <p>wikis accepted</p>
                     <p class="container__statistique__detail">
-                        <?= count($wikis) ?>
+                        <?= count($wikisaccepted) ?>
                     </p>
                 </div>
             </div>
@@ -346,7 +349,7 @@
                                 <td>
 
 
-                                    <div class="btn btn-outline-primary">modifier</div>
+                                    <!-- <div class="btn btn-outline-primary">modifier</div> -->
                                     <form action="./index.php?route=tagdelete" method="post">
                                         <input type="hidden" name="id" value="<?= $tag['id'] ?>">
                                         <button type="submit" class="btn btn-outline-danger">supprimer</button>
@@ -421,7 +424,7 @@
                                 <td>
 
 
-                                    <div class="btn btn-outline-primary">modifier</div>
+                                    <!-- <div class="btn btn-outline-primary">modifier</div> -->
                                     <form action="./index.php?route=categoriedelete" method="post">
                                         <input type="hidden" name="id" value="<?= $categorie['id'] ?>">
                                         <button type="submit" class="btn btn-outline-danger">supprimer</button>
@@ -434,31 +437,6 @@
             </div>
 
         </div>
-
-        <!-- <div class="container__header">
-            <h3>Tags Statistiques</h3>
-            <i class="fas fa-table"></i>
-        </div>
-
-        <table class="container__table">
-            <thead>
-                <tr>
-                    <th>nom</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                    <td></td>
-                    <td>
-                        <div class="btn btn-outline-primary">modifier</div>
-                        <div class="btn btn-outline-danger">supprimer</div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table> -->
 
     </main>
 

@@ -13,14 +13,24 @@ use app\Controllers\ErrorController;
 $router = isset($_GET['route']) ? $_GET['route'] : 'home';
 
 
-
 switch ($router) {
 
     case 'home':
+
         $controllers = new HomeController;
         $controllers->gethome();
 
         break;
+
+    case 'search':
+ 
+        $input = $_POST['input'];
+        $wikis = new HomeController;
+        $wikis->search($input);
+        
+
+        break;
+
     case 'Signup':
         $controllers = new AuthController;
         $controllers->index();
@@ -86,6 +96,19 @@ switch ($router) {
     case 'categoriedelete':
         $controllers = new DashboardController;
         $controllers->categoriedelete();
+        break;
+
+    case 'author':
+        $controllers = new AuthController;
+        $controllers->signinauth();
+
+        break;
+
+    case 'wikishow':
+        
+        $controllers = new HomeController;
+        $controllers->wikishow();
+
         break;
 
 

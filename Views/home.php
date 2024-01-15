@@ -16,10 +16,10 @@ include('../Views/includes/navbar.php');
 ?>
 
 <body>
-  <div class="row">
+  <div class="row" id="search_list" >
     <?php foreach ($allWikis as $wiki): ?>
       <div class="col-lg-4 col-md-6 col-12 my-4 d-flex flex-column align-items-center">
-        <a href="" class="card stretched-link text-decoration-none">
+        <a href="./index.php?route=wikishow&id=<?=$wiki['id']?>" class="card stretched-link text-decoration-none">
           <div style="max-width: 23rem;" class="card">
             <img src="<?= APP_URL ?>public/assets/images/wiki.JPG"" alt="gara">
               <!-- style="height: 9rem;" class="my-2 position-relative"> -->
@@ -42,6 +42,24 @@ include('../Views/includes/navbar.php');
     <?php endforeach; ?>
   </div>
 
+  <script>
+    $(document).ready(function(){
+
+        $("#hero_field").keyup(function(){
+            var input = $(this).val(); 
+            if(input == "") input = 'all';
+
+            $.ajax({
+                url: "index.php?route=search",
+                method: "POST",
+                data: {input: input},
+                success: function(data){
+                    $("#search_list").html(data);
+                }
+            });
+        });
+    });
+</script>
  
   <?php
 include('../Views/includes/footer.php');
