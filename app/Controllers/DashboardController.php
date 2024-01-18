@@ -54,6 +54,7 @@ class DashboardController
 
     }
 
+    
     public function addTags()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -75,6 +76,19 @@ class DashboardController
         header("Location: index.php?route=dashboard");
 
     }
+
+    public function tagupdate()
+    {
+
+        $id = $_POST['id'];
+        $nom = $_POST['nom'];
+        $tagsModel = new TagsModel;
+        $tagsModel->tagupdate($id,$nom);
+        header("Location: index.php?route=dashboard");
+
+    }
+
+   
 
     public function addCategories()
     {

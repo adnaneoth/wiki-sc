@@ -28,6 +28,15 @@ class TagsModel {
             header("Location: index.php?route=dashboard");
         }
 
+        public function tagupdate($id,$nom) {
+            $stmt = $this->db->prepare("UPDATE `tags` SET `nom`=? where id = ?");
+            $stmt->execute([$nom,$id]);
+            header("Location: index.php?route=dashboard");
+        }
+        
+
+        
+
         public function categoriedelete($id) {
             $stmt = $this->db->prepare("DELETE FROM categories WHERE id = ?");
             $stmt->execute([$id]);

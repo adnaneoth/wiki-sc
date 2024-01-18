@@ -22,11 +22,13 @@
                         <a href="index.html" class="nav-item nav-link active me-4">Home</a>
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" id="hero_field" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success me-2" type="submit">Search</button>
+                            <button class=" text-light btn me-2" style="background-color:#565f79;" type="submit">Search</button>
                         </form>
                     </div>
-                    <a href="./index.php?route=Signup" class="btn btn-success me-2">Sign Up</a>
-                    <a href="./index.php?route=Signin" class="btn btn-success">Login</a>
+                    <a href="./index.php?route=Signup" class="btn me-2">Sign Up</a>
+                    <a href="./index.php?route=Signin" class="btn text-light " style="background-color:#565f79;">Login</a>
+
+    
                 </div>
             </nav>  
         </div>

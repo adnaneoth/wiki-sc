@@ -9,6 +9,19 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <title>Document</title>
+  <style>
+    .cardss{
+      background-color: #ecf0f3;
+      box-shadow:
+        10px 10px 10px #d1d9e6,
+        -10px -10px 10px #f9f9f9;
+    }
+    main img{
+      width:100%;
+      height: 100vh;
+    }
+    
+    </style>
 </head>
 <?php
 include('../Views/includes/navbar.php');
@@ -16,12 +29,15 @@ include('../Views/includes/navbar.php');
 ?>
 
 <body>
+  <main>
+   <img src="<?= APP_URL ?>public/assets/images/hero.JPG"">
+  </main>
   <div class="row" id="search_list" >
     <?php foreach ($allWikis as $wiki): ?>
-      <div class="col-lg-4 col-md-6 col-12 my-4 d-flex flex-column align-items-center">
+      <div class="col-lg-4 col-md-6 col-12 my-4 d-flex flex-column align-items-center cardss">
         <a href="./index.php?route=wikishow&id=<?=$wiki['id']?>" class="card stretched-link text-decoration-none">
           <div style="max-width: 23rem;" class="card">
-            <img src="<?= APP_URL ?>public/assets/images/wiki.JPG"" alt="gara">
+            <img src="<?= APP_URL ?>public/assets/images/article.JPG"" alt="gara">
               <!-- style="height: 9rem;" class="my-2 position-relative"> -->
             <div class="card-body">
               <div class="card-head">
@@ -41,7 +57,7 @@ include('../Views/includes/navbar.php');
       </div>
     <?php endforeach; ?>
   </div>
-
+  
   <script>
     $(document).ready(function(){
 

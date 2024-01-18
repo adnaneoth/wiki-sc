@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,17 +21,12 @@
           <i class="typcn typcn-eye" id="eye"></i>
           <input type="password" name="password" placeholder="Passsword" id="pwd" autocomplete="off">
           <label>
-            <input type="checkbox">
-            <span></span>
-            <small class="rmb">Remember me</small>
+            <input type="submit" value="Sign in" class="btn1">
           </label>
-          <a href="#" class="forgetpass">Forget Password?</a>
-          <input type="submit" value="Sign in" class="btn1">
         </form>
-          <a href="#" class="dnthave">Don’t have an account? Sign up</a>
+          <a href="#" class="dnthave text-dark">Don’t have an account? Sign up</a>
     </div> 
          <div class="footer">
-        <span>Made with <i class="fa fa-heart pulse"></i> <a href="https://www.google.de/maps/place/Augsburger+Puppenkiste/@48.360357,10.903245,17z/data=!3m1!4b1!4m2!3m1!1s0x479e98006610a511:0x73ac6b9f80c4048f"><a href="https://codepen.io/lordgamer2354">By Anees Khan</a></span>
       </div>
   </div>
 </body>

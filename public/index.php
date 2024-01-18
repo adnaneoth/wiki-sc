@@ -8,6 +8,8 @@ use app\Controllers\HomeController;
 use app\Controllers\SignupController;
 use app\Controllers\ErrorController;
 
+use app\Controllers\WikiController;
+
 
 
 $router = isset($_GET['route']) ? $_GET['route'] : 'home';
@@ -23,11 +25,11 @@ switch ($router) {
         break;
 
     case 'search':
- 
+
         $input = $_POST['input'];
         $wikis = new HomeController;
         $wikis->search($input);
-        
+
 
         break;
 
@@ -93,6 +95,11 @@ switch ($router) {
         $controllers->tagdelete();
         break;
 
+    case 'tagupdate':
+        $controllers = new DashboardController;
+        $controllers->tagupdate();
+        break;
+
     case 'categoriedelete':
         $controllers = new DashboardController;
         $controllers->categoriedelete();
@@ -105,14 +112,16 @@ switch ($router) {
         break;
 
     case 'wikishow':
-        
+
         $controllers = new HomeController;
         $controllers->wikishow();
 
         break;
 
-
-
+    case 'addwiki':
+        $controllers = new AuthController;
+        $controllers->addwiki();
+        break;
 
     default:
         $controllers = new ErrorController;

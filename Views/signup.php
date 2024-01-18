@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="<?= APP_URL ?>public/assets/css/login.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/../public/assets/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Registre</title>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      .card{
+	      box-shadow:
+		10px 10px 10px #d1d9e6,
+		-10px -10px 10px #f9f9f9;
+	      border-radius: 12px;
+      }
+      .Register{
+        background-color:#565f79;
+      }
+    </style>
 </head>
-
 <body>
-    <section class="vh-100" style="background-color: #5F9EA0;">
-        <div class="container h-100 " >
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-lg-12 col-xl-11">
-                    <div class="card text-black" style="border-radius: 25px;">
-                        <div class="card-body p-md-5">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-
-                                    <form class="mx-1 mx-md-4" id="form" method="post" action="./index.php?route=signupaction">
+    
+</body>
+</html>
+<section class="vh-100">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+            <div class="card-body p-md-5  ">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 card">
+  
+                  <p class="text-center test-dark h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+  
+                  <!-- <form class="mx-1 mx-md-4" name="myForm" method="POST" action="<?= APP_URL ?>app/Controllers/SignupController.php"> -->
+                  <form class="mx-1 mx-md-4" id="form" method="post" action="./index.php?route=signupaction">
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -62,20 +74,32 @@
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" name="submit" class="btn btn-primary btn-lg">Register</button>
+                                            <button type="submit" name="submit" class="btn btn-lg text-light Register">Register</button>
                                         </div>
 
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+  
                 </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img src="<?= APP_URL ?>public/assets/images/signup.svg"
+                    class="img-fluid" alt="sigup">
+  
+                </div>
+              </div>
             </div>
-    </section>
-
-
-    <script src="assets/js/signup.js"></script>
+          </div>
+        </div>
+      </div>
+      <div
+    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+    <!-- Copyright -->
+    <div class="test-dark mb-3 mb-md-0">
+      Copyright Â© 2024. All rights reserved.
+    </div>
+</div>
+  </section>
+  <script src="assets/js/signup.js"></script>
 </body>
-
-</html>
+    </html>

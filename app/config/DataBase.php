@@ -4,16 +4,18 @@ namespace app\config;
 use PDO;
 use PDOException;
 
-class DataBase {
+class DataBase
+{
     private $host = "localhost";
     private $user = "root";
     private $password = "";
     private $database = "gestion_wekis";
     private $conn;
 
-    private static $instance=null;
+    private static $instance = null;
 
-    private function __construct() {
+    private function __construct()
+    {
         try {
             $dsn = "mysql:host={$this->host};dbname={$this->database}";
             $this->conn = new PDO($dsn, $this->user, $this->password);
@@ -25,14 +27,16 @@ class DataBase {
         }
     }
 
-    public static function getInstance(){
-        if (self::$instance===null){
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
             self::$instance = new self;
         }
         return self::$instance;
     }
 
-    public function getConnection() {
+    public function getConnection()
+    {
         return $this->conn;
     }
 }

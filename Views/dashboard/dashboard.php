@@ -22,10 +22,12 @@
                 <div class="menu__profile">
                     <img src="<?= APP_URL ?>public/assets/images/admin_prfl.jpg" alt="">
                 </div>
-                <h4 class="menu__profile__name"><?php
-                session_start();
-                echo $_SESSION['nom'];
-                ?></h4>
+                <h4 class="menu__profile__name">
+                    <?php
+                    session_start();
+                    echo $_SESSION['nom'];
+                    ?>
+                </h4>
             </li>
             <li class="menu__list__item">
                 <a href="">
@@ -349,7 +351,33 @@
                                 <td>
 
 
-                                    <!-- <div class="btn btn-outline-primary">modifier</div> -->
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModaltag<?= $tag['id'] ?>">
+                                        modifier
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModaltag<?= $tag['id'] ?>" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+
+                                                </input>
+                                                <form action="./index.php?route=tagupdate" method="post">
+                                                    <input type="hidden" name="id" value="<?= $tag['id'] ?>">
+                                                    <input class="modal-body text-dark " name="nom"
+                                                        value="<?= $tag['nom'] ?>">
+                                                    <br />
+                                                    <button type="submit" class="btn btn-outline-primary"
+                                                        name="isaccept">modifier</button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <form action="./index.php?route=tagdelete" method="post">
                                         <input type="hidden" name="id" value="<?= $tag['id'] ?>">
                                         <button type="submit" class="btn btn-outline-danger">supprimer</button>
